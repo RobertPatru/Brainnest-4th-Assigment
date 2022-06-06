@@ -136,7 +136,7 @@ function calcuate(event) {
 
 function clearWhiteBackground() {
     // remove the activate class (whitch remove the white)
-    divide.classList.remove('activate');
+    divide.classList.remove('activate');18
     multiplication.classList.remove('activate');
     minus.classList.remove('activate');
     plus.classList.remove('activate');
@@ -144,7 +144,7 @@ function clearWhiteBackground() {
 
 function error() {
     if (result.innerText.length > 7) {
-        result.innerText = 'Err';
+        result.innerText = 'Too many digits';
         previousNumber = '';
         currentNumber = '';
     }
