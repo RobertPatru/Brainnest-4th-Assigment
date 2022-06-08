@@ -21,12 +21,8 @@ const selectAllNumbers = Array.from(document.querySelectorAll('.number'));
 // ------------------------------------  Activate the "appendNumber" function when the numerical buttons are clicked 
 selectAllNumbers.forEach( button => {
     button.addEventListener('click', () => {
-        currentNumber.toString();
-        if( (typeof(currentNumber)) == "number" ) {
-            debugger
-        }
-        console.log(typeof(currentNumber));
-        console.log(currentNumber);
+        currentNumber = currentNumber.toString();
+
         //if the numer alreadi contains a "." (dott) then don't add another one
         if (currentNumber.includes('.') && button.textContent == '.') {
             return;
@@ -50,23 +46,27 @@ allOperators.forEach( button => {
         if (currentNumber == '') 
             return;
 
+            // I STILL NEED TO IMPROVE THIS PART
+        // if(button.textContent == "+/-") {
+        //     currentNumber = -1 * currentNumber;
+        //     console.log(typeof(currentNumber));
+        // }
+
         compute();
      
        operation = button.textContent;
        previousNumber = currentNumber;
        currentNumber = '';
-    //    console.log("Operator: " + operation);
-    //    console.log("Prev: " + previousNumber);
-    //    console.log("Curr: " + currentNumber);
+       console.log("------------------------------------");
+       console.log('allOperators: ')
+       console.log("Operator: " + operation);
+       console.log("Prev: " + previousNumber);
+       console.log("Curr: " + currentNumber);
     });
 } );
 
-function chooseOperation() {
-
-}
 
 function compute () {
- 
     let computation;
 
     // convert the strings to a number so we can do some math
@@ -85,7 +85,7 @@ function compute () {
             computation = prevNumb - curNumb;
             break;
         
-        case '*':
+        case 'x':
             computation = prevNumb * curNumb;
             break;
         
@@ -101,6 +101,11 @@ function compute () {
     currentNumber = computation;
     operation = undefined;
     previousNumber = '';
+
+    console.log("------------------------------------");
+    console.log('Compute: ')
+    console.log("Prev: " + previousNumber);
+    console.log("Curr: " + currentNumber);
 }
 
 // ------------------------------------  Clears every number an operation  ------------------------------------
@@ -111,10 +116,6 @@ function clearEverything() {
     displayedResult.textContent = '0';
 }
 
-// ------------------------------------  Activate "clearEverything" function when "ac" button is clicked  ------------------------------------
+
 ac.addEventListener('click', clearEverything);
-
-
-equal.addEventListener('click', button => {
-    compute();
-});
+equal.addEventListener('click', compute);
