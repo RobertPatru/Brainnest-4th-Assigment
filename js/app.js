@@ -4,7 +4,6 @@ const percent = document.querySelector('.percent');
 const divide = document.querySelector('.divide');
 const multiplication = document.querySelector('.multiplication');
 const minus = document.querySelector('.minus');
-const three = document.querySelector('.three');
 const plus = document.querySelector('.plus');
 const dott = document.querySelector('.dott');
 const equal = document.querySelector('.equal');
@@ -116,6 +115,23 @@ function clearEverything() {
     displayedResult.textContent = '0';
 }
 
+function removeHightlight() {
+    allOperators.forEach( button => {
+        button.classList.remove("activate");  
+    } );
+}
+
+function addHighlight(e) {
+    removeHightlight();
+    e.target.classList.add('activate');
+}
+
+divide.addEventListener('click', addHighlight);
+multiplication.addEventListener('click', addHighlight);
+minus.addEventListener('click', addHighlight);
+plus.addEventListener('click', addHighlight);
 
 ac.addEventListener('click', clearEverything);
+ac.addEventListener('click', removeHightlight);
 equal.addEventListener('click', compute);
+equal.addEventListener('click', removeHightlight);
