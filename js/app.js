@@ -126,6 +126,30 @@ function addHighlight(e) {
     e.target.classList.add('activate');
 }
 
+function changeSign() {
+    currentNumber = Number(currentNumber) * (-1);
+    currentNumber = currentNumber.toString();
+    displayedResult.textContent = currentNumber;
+}
+
+function calculatePercentage() {
+    if (previousNumber == '')
+        return;
+
+    let percentageResult;
+    previousNumber = Number(previousNumber);
+    currentNumber = Number(currentNumber);
+
+    percentageResult = (currentNumber / 100) * previousNumber;
+    currentNumber = percentageResult.toString();
+    previousNumber = previousNumber.toString();
+    displayedResult.textContent = currentNumber;
+}
+
+percent.addEventListener('click', calculatePercentage);
+
+plusMinus.addEventListener('click', changeSign);
+
 divide.addEventListener('click', addHighlight);
 multiplication.addEventListener('click', addHighlight);
 minus.addEventListener('click', addHighlight);
